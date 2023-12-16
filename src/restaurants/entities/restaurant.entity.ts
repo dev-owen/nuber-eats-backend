@@ -8,7 +8,7 @@ export class Restaurant {
   @Field((type) => Number)
   id: number;
 
-  @Field((is) => String)
+  @Field((type) => String)
   @Column()
   name: string;
 
