@@ -6,8 +6,10 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class RestaurantService {
   constructor(
-    @InjectRepository(Restaurant) private restaurants: Repository<Restaurant>,
+    @InjectRepository(Restaurant) // get repository : connection.getRepository()
+    private restaurants: Repository<Restaurant>,
   ) {}
+
   getAll(): Promise<Restaurant[]> {
     return this.restaurants.find();
   }
