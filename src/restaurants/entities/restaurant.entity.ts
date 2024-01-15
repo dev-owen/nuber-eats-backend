@@ -1,6 +1,7 @@
-import { Field, ObjectType } from '@nestjs/graphql';
+import { Field, InputType, ObjectType } from '@nestjs/graphql';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
+@InputType({ isAbstract: true })
 @ObjectType()
 @Entity()
 export class Restaurant {
@@ -22,7 +23,7 @@ export class Restaurant {
 
   @Field((type) => String)
   @Column()
-  ownersName: boolean;
+  ownersName: string;
 
   @Field((type) => String)
   @Column()
