@@ -2,13 +2,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { RestaurantsModule } from './restaurants/restaurants.module';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
-import { Restaurant } from './restaurants/entities/restaurant.entity';
+import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
-import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -29,7 +28,6 @@ import { User } from './users/entities/user.entity';
       driver: ApolloDriver,
       autoSchemaFile: true,
     }),
-    RestaurantsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -41,6 +39,8 @@ import { User } from './users/entities/user.entity';
       logging: true,
       entities: [User],
     }),
+    UsersModule,
+    CommonModule,
   ],
   controllers: [],
   providers: [],
