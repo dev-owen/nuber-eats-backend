@@ -13,3 +13,12 @@ export class UserProfileOutput extends MutationOutput {
   @Field((type) => User, { nullable: true })
   user?: User;
 }
+
+@ObjectType()
+export class CoreOutput {
+  @Field((type) => String, { nullable: true })
+  error?: string;
+
+  @Field((type) => Boolean)
+  ok: boolean;
+}
