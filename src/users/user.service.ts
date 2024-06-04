@@ -74,6 +74,7 @@ export class UserService {
   }
 
   async editProfile(userId: number, { email, password }: EditProfileInput) {
+    // @ts-ignore
     const user = await this.users.findOne(userId);
     if (email) user.email = email;
     if (password) user.password = password;
